@@ -119,23 +119,32 @@ button {
   margin: 0 0 20px 10px;
 }
 
-.search_form input{
+.search__form input{
   
   width: 220px;
   height: 25px;
   margin-right: 15px;
 }
 
-.search_form select{
+.search__form select{
   width: 220px;
   height: 25px;
   margin-right: 15px;
+}
+
+.products_list__search_btn{
+  background-color: #ffffff;
+  height: 25px;
+  width: 50px;
+  border: 1px solid #000; 
+
 }
 
 table{
   width: 650px;
   margin: 0 auto;
   border: 1px solid;
+  
 }
 table th{
   height: 30px;
@@ -435,6 +444,8 @@ table tr:nth-child(odd) td{
 
 .update__form-group img{
   margin:0 auto 0 70px;
+  background-color: #b6fdd3;
+}
 }
 
 .update__form-group p{

@@ -12,37 +12,37 @@
 
                 <div class="product__show-group">
                     <p class="id_number">ID</p>
-                    <div class="product_show_data">{{$product->id}}.</div>
+                    <div class="product__show-data">{{$product->id}}.</div>
                 </div>
 
                 <div class="product__show-group">
                         <p>商品画像</p>
-                        <div class="product_show_data">@if($product->img_path)
+                        <div class="product__show-data">@if($product->img_path)
                         <img src="{{ asset($product->img_path) }}" alt="{{ $product->product_name }}" width="100" height="100">
                             @else
-                            <div class="product_show_data"> 商品画像はありません</div>
+                            <div class="product__show-data"> 商品画像はありません</div>
                             @endif
                         </div>
                 </div> 
 
                 <div class="product__show-group">
                     <p>商品名</p>
-                    <div class="product_show_data">{{ $product->product_name }}</div>
+                    <div class="product__show-data">{{ $product->product_name }}</div>
                 </div>
 
                 <div class="product__show-group">
                     <p>メーカー</p>
-                    <div class="product_show_data">{{ $product->company->company_name }}</div>
+                    <div class="product__show-data">{{ $product->company->company_name }}</div>
                 </div>
 
                 <div class="product__show-group">
                     <p>価格</p>
-                    <div class="product_show_data">{{ $product->price }}円</div>
+                    <div class="product__show-data">{{ $product->price }}円</div>
                 </div>
 
                 <div class="product__show-group">
                     <p>在庫数</p>
-                    <div class="product_show_data">{{ $product->stock }}</div>
+                    <div class="product__show-data">{{ $product->stock }}</div>
                 </div>
 
                 <div class="product__show-group"> 
