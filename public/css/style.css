@@ -1,0 +1,478 @@
+.container {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.row{
+  text-align: center;
+  display: block;
+}
+button {
+  cursor: pointer;
+}
+
+.required::after {
+  content: " *";
+  color: red;
+  vertical-align: middle;
+}
+
+.id_number{
+  font-style: oblique;
+}
+
+/* ------------------------------ユーザーログイン登録画面------------------------------ */
+.login__title{
+  padding: 50px 0 0 0;
+  margin: 50px 0;
+  font-size: 30px;
+}
+
+.login_input input{
+  width: 500px;
+  height: 30px;
+  margin:0 auto 35px auto;
+
+}
+
+.new_user__login_btn{
+  width: 400px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around; 
+
+}
+
+.new_user_btn{
+  border: none;
+  border-radius: 100px;
+  color: #000000;
+  background-color: #e2a06b;
+  text-decoration: none;
+  width: 8em;
+}
+
+.login_submit_btn{
+  border: none;
+  border-radius: 100px;
+  color: #000000;
+  background-color: #6be2ce;
+  text-decoration: none;
+  width: 8em;
+}
+
+/* ------------------------------ユーザー新規登録画面------------------------------ */
+.register__title{
+  padding: 50px 0 0 0;
+  margin: 50px 0;
+  font-size: 30px;
+}
+
+.register_input input{
+  margin:0 auto 35px auto;
+  width: 500px;
+  height: 30px;
+
+}
+
+.new_register__back_btn{
+  width: 400px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around; 
+
+}
+
+.new_user_submit_btn{
+  border: none;
+  border-radius: 100px;
+  color: #000000;
+  background-color: #e2a06b;
+  text-decoration: none;
+  width: 8em;
+}
+
+.register_back_btn{
+  border: none;
+  border-radius: 100px;
+  color: #000000;
+  background-color: #6be2ce;
+  text-decoration: none;
+  width: 8em;
+}
+/* ------------------------------商品一覧画面------------------------------ */
+
+
+
+.products_title__search_form{
+  width: 650px;
+  margin: 0 auto;
+}
+.products_list-title{
+  text-align: left;
+  margin: 50px 0 15px 10px;
+  font-size: 30px;
+}
+
+.search__form{
+  text-align: left;
+  margin: 0 0 20px 10px;
+}
+
+.search_form input{
+  
+  width: 220px;
+  height: 25px;
+  margin-right: 15px;
+}
+
+.search_form select{
+  width: 220px;
+  height: 25px;
+  margin-right: 15px;
+}
+
+table{
+  width: 650px;
+  margin: 0 auto;
+  border: 1px solid;
+}
+table th{
+  height: 30px;
+}
+
+table td{
+  height: 50px;
+  background-color: #fff;
+}
+
+table td.product__name{
+  width: 150px;
+}
+
+table tr:nth-child(odd) td{
+  background-color: #cccccc;
+}
+
+.show__destroy_btn{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.show__btn{
+  display: inline-block;
+  margin-right: 10px;
+  border: none;
+  border-radius: 3px;
+  color: #000000;
+  background-color: #2cf1ff;
+  text-decoration: none;
+  width: 50px;
+  height: 30px;
+}
+
+.destroy__btn{
+  border: none;
+  border-radius: 3px;
+  color: #ffffff;
+  background-color: #ff2c2c;
+  text-decoration: none;
+  width: 50px;
+  height: 30px;
+}
+
+.destroy__form{
+  display: inline-block;
+}
+
+.products__list-id{
+  text-align: center;
+}
+
+.new_product__btn{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  color: #000000;
+  background-color: #e2a06b;
+  text-decoration: none;
+  width: 80px;
+  height: 30px;
+}
+
+.pagination{
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* ------------------------------商品新規登録画面------------------------------ */
+
+.product__regist-title{
+  text-align: left;
+  margin: 50px 0 15px 10px;
+  font-size: 30px;
+}
+
+.product__regist-form{
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  
+}
+
+.form__groups{
+  border: #000000 solid 1px;
+  padding: 15px;
+  margin: 0 auto;
+  width: 440px;
+}
+
+.form__group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: bold; 
+}
+
+.form__group label{
+  text-align: right;
+  padding-right: 20px;
+}
+
+.form__group input, .form__group textarea, .form__group select{
+  width: 70%;
+  padding-left: 20px;
+  justify-content: left;
+
+}
+
+.form__group textarea{
+  height: 100px;
+}
+
+.form_control_file{
+  width: auto; 
+  padding-left: 0 !important;
+}
+
+.new_product__back_btn{
+  width: 250px;
+  display: flex;
+  justify-content: space-around; 
+  align-items: start;
+}
+
+.new_product__submit_btn{
+  margin: 40px 20px 20px 20px;
+  border: none;
+  border-radius: 3px;
+  color: #000000;
+  background-color: #e2a06b;
+  text-decoration: none;
+  width: 80px;
+  height: 30px;
+}
+
+.new_product__back-btn{
+  margin: 40px 20px 20px 20px;
+  border: none;
+  border-radius: 3px;
+  color: #000000;
+  background-color: #2cf1ff;
+  text-decoration: none;
+  width: 80px;
+  height: 30px;
+}
+
+
+
+/* ------------------------------商品詳細画面------------------------------ */
+
+.product__shows{
+  width: 500px ;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.product__show-title{
+  text-align: left;
+  margin: 50px 0 15px 10px;
+  font-size: 30px;
+}
+
+
+
+.product__show-groups{
+  border: #000000 solid 1px;
+  padding: 15px;
+  margin: 0 auto;
+  width: 440px;
+
+}
+
+
+.product__show-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+.product__show-group p{
+  margin: 0;
+  text-align: left;
+  width: 35%;
+  font-weight: bold;
+  padding-left: 20px;
+
+}
+
+.product__show-data{
+  width: 65%;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.product__show-data img{
+  width: 55%;
+  background-color: #b6fdd3;
+}
+
+.update_link__back_btn{
+  width: 250px;
+  display: flex;
+  justify-content: space-around; 
+  align-items: start;
+}
+
+.update_link_btn{
+  margin: 40px 20px 20px 20px;
+  border: none;
+  border-radius: 3px;
+  color: #000000;
+  background-color: #e2a06b;
+  text-decoration: none;
+  width: 80px;
+  height: 30px;
+}
+
+.product_show_btn{
+  margin: 40px 20px 20px 20px;
+  border: none;
+  border-radius: 3px;
+  color: #000000;
+  background-color: #2cf1ff;
+  text-decoration: none;
+  width: 80px;
+  height: 30px;
+}
+
+/* ------------------------------商品情報編集画面------------------------------ */
+.product_update_title{
+  text-align: left;
+  margin: 50px 0 15px 10px;
+  font-size: 30px;
+}
+
+.product__update-form{
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  
+}
+
+.update__form-groups{
+  border: #000000 solid 1px;
+  padding: 15px;
+  margin: 0 auto;
+  width: 440px;
+}
+
+.update__form-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: bold; 
+}
+
+.update__form-group label{
+  text-align: right;
+  padding-right: 20px;
+}
+
+.update__form-group input, .update__form-group textarea, .update__form-group select{
+  width: 70%;
+  padding-left: 20px;
+  justify-content: left;
+
+}
+.update-form__group_id {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: bold; 
+}
+.update-form__group_id p{
+  margin: 0;
+  font-style: oblique;
+}
+.update-form__groups_data{
+  font-weight: normal;
+  width: 65%;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.update__form-group textarea{
+  height: 100px;
+}
+
+.update__form-group img{
+  margin:0 auto 0 70px;
+}
+
+.update__form-group p{
+  font-weight: normal;
+  margin: 0;
+  width: 70%;
+  text-align: left;
+}
+
+.update-form__control-file{
+  margin-left: 125px;
+}
+
+.update_product__back_btn{
+  width: 250px;
+  display: flex;
+  justify-content: space-around; 
+  align-items: start;
+}
+
+.update_product__btn{
+  margin: 40px 20px 20px 20px;
+  border: none;
+  border-radius: 3px;
+  color: #000000;
+  background-color: #e2a06b;
+  text-decoration: none;
+  width: 80px;
+  height: 30px;
+}
+
+.update_product__back-btn{
+  margin: 40px 20px 20px 20px;
+  border: none;
+  border-radius: 3px;
+  color: #000000;
+  background-color: #2cf1ff;
+  text-decoration: none;
+  width: 80px;
+  height: 30px;
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<ruleset name="CustomRules">
+    <description>Custom coding standards for our project.</description>
+
+    <!-- PSR-12準拠 -->
+    <rule ref="PSR12"/>
+
+    <!-- else, elseifを同じ行に記載する -->
+    <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+    
+    <!-- メソッドのネストの深さや複雑さを制限する -->
+    <rule ref="Generic.Metrics.CyclomaticComplexity">
+        <properties>
+            <property name="complexity" value="3"/>
+        </properties>
+    </rule>
+
+    <!-- キャメルケースの変数名に関するルール -->
+    <rule ref="Squiz.NamingConventions.ValidVariableName"/>
+
+    <!-- さらにカスタムルールを追加可能 -->
+</ruleset>
