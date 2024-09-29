@@ -65,7 +65,6 @@ class ProductController extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-
             return back();
         }
 
@@ -110,7 +109,6 @@ class ProductController extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-
             return back();
         }
 
@@ -119,10 +117,14 @@ class ProductController extends Controller
 
     public function productDestroy($id)
     {
-        // $product = Product::find($id);
-        // $product->delete();
-        $deleteProduct = $this->product->deleteProductById($id);
-
+        DB::beginTransaction();
+        try {
+            $deleteProduct = $this->product->deleteProductById($id);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back();
+        }
         return redirect()->route('product.list');
     }
 }

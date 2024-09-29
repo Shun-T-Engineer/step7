@@ -48,7 +48,7 @@
               <td class="products__list-id">{{$product->id }}.</td>
               <td>
                 @if($product->img_path)  
-                  <img src="{{ asset($product->img_path) }}" width="50" height="50">
+                  <img class="products__list-img" src="{{ asset($product->img_path) }}" >
                 @else
                   商品画像
                 @endif
