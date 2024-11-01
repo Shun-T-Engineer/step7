@@ -93,7 +93,6 @@ class ProductController extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-
             return back();
         }
 
@@ -138,7 +137,6 @@ class ProductController extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-
             return back();
         }
 

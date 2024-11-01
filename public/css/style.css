@@ -139,7 +139,6 @@ button {
   height: 25px;
   width: 50px;
   border: 1px solid #000; 
-
 }
 
 table{
@@ -171,7 +170,6 @@ table tr:nth-child(odd) td{
   height: 50px; 
   object-fit: contain;
 }
-
 .show__destroy_btn{
   display: flex;
   justify-content: space-around;
