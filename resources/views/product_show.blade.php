@@ -18,7 +18,7 @@
                 <div class="product__show-group">
                         <p>商品画像</p>
                         <div class="product__show-data">@if($product->img_path)
-                        <img src="{{ asset($product->img_path) }}" alt="{{ $product->product_name }}" width="100" height="100">
+                        <img class="products__show-img" src="{{ asset($product->img_path) }}" alt="{{ $product->product_name }}" width="100" height="100">
                             @else
                             <div class="product__show-data"> 商品画像はありません</div>
                             @endif

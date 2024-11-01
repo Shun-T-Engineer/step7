@@ -20,6 +20,17 @@ class ProductController extends Controller
     {
         $query = $this->product->newQuery();
         $companies = $this->company->all();
+        $products = $query->sortable()->paginate(7);
+
+        return view('products_list', [
+            'products' => $products,
+            'companies' => $companies,
+        ]);
+    }
+
+    public function searchProducts(Request $request)
+    {
+        $query = Product::with('company');
 
         $keyword = $request->input('keyword');
         if (! empty($keyword)) {
@@ -31,12 +42,29 @@ class ProductController extends Controller
             $query->where('company_id', $companyId);
         }
 
+        $upperLimitPrice = $request->input('upper_limit_price');
+        if (! empty($upperLimitPrice)) {
+            $query->where('price', '<=', $upperLimitPrice);
+        }
+
+        $lowerLimitPrice = $request->input('lower_limit_price');
+        if (! empty($lowerLimitPrice)) {
+            $query->where('price', '>=', $lowerLimitPrice);
+        }
+
+        $upperLimitStock = $request->input('upper_limit_stock');
+        if (! empty($upperLimitStock)) {
+            $query->where('stock', '<=', $upperLimitStock);
+        }
+
+        $lowerLimitStock = $request->input('lower_limit_stock');
+        if (! empty($lowerLimitStock)) {
+            $query->where('stock', '>=', $lowerLimitStock);
+        }
+
         $products = $query->paginate(7);
 
-        return view('products_list', [
-            'products' => $products,
-            'companies' => $companies,
-        ]);
+        return response()->json(['products' => $products]);
     }
 
     public function showProductRegistForm()
@@ -119,10 +147,20 @@ class ProductController extends Controller
 
     public function productDestroy($id)
     {
-        // $product = Product::find($id);
-        // $product->delete();
-        $deleteProduct = $this->product->deleteProductById($id);
+        DB::beginTransaction();
+        try {
+            $deleteProduct = $this->product->deleteProductById($id);
+            DB::commit();
 
-        return redirect()->route('product.list');
+            return response()->json([
+                'success' => true,
+            ]);
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            return response()->json([
+                'success' => false,
+            ]);
+        }
     }
 }

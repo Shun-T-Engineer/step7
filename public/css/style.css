@@ -3,10 +3,6 @@
   padding-left: 0;
 }
 
-.row{
-  text-align: center;
-  display: block;
-}
 button {
   cursor: pointer;
 }
@@ -21,6 +17,12 @@ button {
   font-style: oblique;
 }
 
+.error_message{
+  width: 70%;
+  margin: 8px 0 0 auto;
+  color: red; 
+  font-size: 10px;
+}
 /* ------------------------------ユーザーログイン登録画面------------------------------ */
 .login__title{
   padding: 50px 0 0 0;
@@ -147,6 +149,7 @@ table{
   
 }
 table th{
+  text-align: center;
   height: 30px;
 }
 
@@ -163,11 +166,18 @@ table tr:nth-child(odd) td{
   background-color: #cccccc;
 }
 
+.products__list-img{
+  width: 50px; 
+  height: 50px; 
+  object-fit: contain;
+}
+
 .show__destroy_btn{
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
 .show__btn{
   display: inline-block;
   margin-right: 10px;
@@ -239,23 +249,24 @@ table tr:nth-child(odd) td{
 }
 
 .form__group{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: 20px;
   font-weight: bold; 
 }
 
-.form__group label{
-  text-align: right;
-  padding-right: 20px;
+.label_input{
+  display: flex;
+  align-items: center;
 }
 
-.form__group input, .form__group textarea, .form__group select{
+.label_input label{
+  text-align: right;
+  padding-right: 20px;
+  width: 30%;
+}
+
+.label_input input, .form__group textarea, .form__group select {
   width: 70%;
   padding-left: 20px;
-  justify-content: left;
-
 }
 
 .form__group textarea{
@@ -331,6 +342,12 @@ table tr:nth-child(odd) td{
   width: 300px;
 }
 
+.products__show-img{
+  width: 50px; 
+  height: 50px; 
+  object-fit: contain;
+}
+
 .product__show-group p{
   margin: 0;
   text-align: left;
@@ -402,22 +419,20 @@ table tr:nth-child(odd) td{
 }
 
 .update__form-group{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: 20px;
   font-weight: bold; 
 }
 
-.update__form-group label{
+.label_input label{
   text-align: right;
   padding-right: 20px;
+  width: 30%;
 }
 
-.update__form-group input, .update__form-group textarea, .update__form-group select{
+
+.label_input input, .label_input textarea, .label_input select{
   width: 70%;
   padding-left: 20px;
-  justify-content: left;
 
 }
 .update-form__group_id {
@@ -428,8 +443,11 @@ table tr:nth-child(odd) td{
   font-weight: bold; 
 }
 .update-form__group_id p{
-  margin: 0;
+  text-align: right;
+  padding-right: 20px;
+  width: 30%;
   font-style: oblique;
+  margin: 0;
 }
 .update-form__groups_data{
   font-weight: normal;
@@ -438,16 +456,16 @@ table tr:nth-child(odd) td{
   white-space: nowrap;
 }
 
-.update__form-group textarea{
+.label_input textarea{
   height: 100px;
 }
 
-.update__form-group img{
-  margin:0 auto 0 70px;
+.label_input img{
   background-color: #b6fdd3;
+  margin-bottom: 20px;
 }
 
-.update__form-group p{
+.label_input p{
   font-weight: normal;
   margin: 0;
   width: 70%;

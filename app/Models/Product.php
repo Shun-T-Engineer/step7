@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Kyslik\ColumnSortable\Sortable;
 
 class Product extends Model
 {
     use HasFactory;
+    use Sortable;
 
     public function company()
     {
@@ -24,7 +27,6 @@ class Product extends Model
 
     public function registProduct($data, $image_path = null)
     {
-
         DB::table('products')->insert([
             'product_name' => $data->product_name,
             'company_id' => $data->company_id,
@@ -50,5 +52,21 @@ class Product extends Model
     public function deleteProductById($id)
     {
         return $this->destroy($id);
+    }
+
+    public $sortable = ['id', 'product_name', 'price', 'stock', 'company_id'];
+
+    //以下API用のコード
+
+    public function stockCount()
+    {
+        if ($this->stock <= 0) {
+            throw new Exception('在庫がありません。');
+        }
+
+        $this->stock -= 1;
+        $this->save();
+
+        return $this;
     }
 }
