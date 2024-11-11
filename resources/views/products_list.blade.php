@@ -39,19 +39,19 @@
       </div>
         <div class="table" id="productList">
         <table>
-          <thead>
+        <thead>
             <tr>
-              <th class="id_number">@sortablelink('id','ID')</th>
-              <th>商品画像</th>
-              <th>@sortablelink('product_name','商品名')</th>
-              <th>@sortablelink('price','価格')</th>
-              <th>@sortablelink('stock','在庫数')</th>
-              <th>@sortablelink('company_id','メーカー名')</th>
-              <th>
-              <button type="button" onclick="location.href='{{ route('product.regist.form') }}'" class="new_product__btn" id="new_product_btn">新規登録</button>
-              </th>
+                <th class="id_number">@sortablelink('id', 'ID', request()->query(), ['class' => 'sortable-link'])</th>
+                <th>商品画像</th>
+                <th>@sortablelink('product_name', '商品名', request()->query(), ['class' => 'sortable-link'])</th>
+                <th>@sortablelink('price', '価格', request()->query(), ['class' => 'sortable-link'])</th>
+                <th>@sortablelink('stock', '在庫数', request()->query(), ['class' => 'sortable-link'])</th>
+                <th>@sortablelink('company_id', 'メーカー名', request()->query(), ['class' => 'sortable-link'])</th>
+                <th>
+                    <button type="button" onclick="location.href='{{ route('product.regist.form') }}'" class="new_product__btn" id="new_product_btn">新規登録</button>
+                </th>
             </tr>
-          </thead>
+        </thead>
           <tbody>
             @foreach ($products as $product)
             <tr id="product-row-{{ $product->id }}">

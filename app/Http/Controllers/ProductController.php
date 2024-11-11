@@ -30,39 +30,11 @@ class ProductController extends Controller
 
     public function searchProducts(Request $request)
     {
+
         $query = Product::with('company');
+        $query = $this->product->searchProductsMethod($request,$query);
 
-        $keyword = $request->input('keyword');
-        if (! empty($keyword)) {
-            $query->where('product_name', 'LIKE', "%{$keyword}%");
-        }
-
-        $companyId = $request->input('company_id');
-        if (! empty($companyId)) {
-            $query->where('company_id', $companyId);
-        }
-
-        $upperLimitPrice = $request->input('upper_limit_price');
-        if (! empty($upperLimitPrice)) {
-            $query->where('price', '<=', $upperLimitPrice);
-        }
-
-        $lowerLimitPrice = $request->input('lower_limit_price');
-        if (! empty($lowerLimitPrice)) {
-            $query->where('price', '>=', $lowerLimitPrice);
-        }
-
-        $upperLimitStock = $request->input('upper_limit_stock');
-        if (! empty($upperLimitStock)) {
-            $query->where('stock', '<=', $upperLimitStock);
-        }
-
-        $lowerLimitStock = $request->input('lower_limit_stock');
-        if (! empty($lowerLimitStock)) {
-            $query->where('stock', '>=', $lowerLimitStock);
-        }
-
-        $products = $query->paginate(7);
+        $products = $query->sortable()->paginate(7);
 
         return response()->json(['products' => $products]);
     }

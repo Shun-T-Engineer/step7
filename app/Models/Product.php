@@ -25,6 +25,41 @@ class Product extends Model
         return $products;
     }
 
+    public function searchProductsMethod($request,$query){
+        
+        $keyword = $request->input('keyword');
+        if(! empty($keyword)){
+            $query->where('product_name','Like',"%{$keyword}%");
+        }
+
+        $companyId = $request->input('company_id');
+        if(! empty($companyId)) {
+            $query->where('company_id' , $companyId);
+        }
+
+        $upperLimitPrice = $request->input('upper_limit_price');
+        if(! empty($upperLimitPrice)){
+            $query->where('price', '<=', $upperLimitPrice);
+        }
+
+        $lowerLimitPrice = $request->input('lower_limit_price');
+        if(! empty($lowerLimitPrice)){
+            $query->where('price', '>=', $lowerLimitPrice);
+        }
+
+        $upperLimitStock = $request->input('upper_limit_stock');
+        if(! empty($upperLimitStock)){
+            $query->where('stock', '<=', $upperLimitStock);
+        }
+
+        $lowerLimitStock = $request->input('lower_limit_stock');
+        if(! empty($lowerLimitStock)){
+            $query->where('stock', '>=', $lowerLimitStock);
+        }
+
+        return $query;
+    }
+
     public function registProduct($data, $image_path = null)
     {
         DB::table('products')->insert([
@@ -55,6 +90,8 @@ class Product extends Model
     }
 
     public $sortable = ['id', 'product_name', 'price', 'stock', 'company_id'];
+
+    
 
     //以下API用のコード
 
