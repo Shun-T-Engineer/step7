@@ -20,7 +20,7 @@ class ProductController extends Controller
     {
         $query = $this->product->newQuery();
         $companies = $this->company->all();
-        $products = $query->sortable()->paginate(7);
+        $products = $query->paginate(7);
 
         return view('products_list', [
             'products' => $products,
@@ -28,13 +28,14 @@ class ProductController extends Controller
         ]);
     }
 
-    public function searchProducts(Request $request)
+    public function searchAndSortProducts(Request $request)
     {
 
         $query = Product::with('company');
-        $query = $this->product->searchProductsMethod($request,$query);
 
-        $products = $query->sortable()->paginate(7);
+        $query = $this->product->searchAndSortProductsMethod($request,$query);
+
+        $products = $query->paginate(7);
 
         return response()->json(['products' => $products]);
     }

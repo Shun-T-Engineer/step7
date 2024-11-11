@@ -21,7 +21,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/products/list', [App\Http\Controllers\ProductController::class, 'showList'])->name('product.list');
-    Route::get('/products/search', [App\Http\Controllers\ProductController::class, 'searchProducts'])->name('product.search');
+    Route::get('/products/search', [App\Http\Controllers\ProductController::class, 'searchAndSortProducts'])->name('product.search');
     Route::get('/product/regist', [App\Http\Controllers\ProductController::class, 'showProductRegistForm'])->name('product.regist.form');
     Route::post('/product/regist', [App\Http\Controllers\ProductController::class, 'productSubmit'])->name('product.submit');
     Route::get('/product/show/{id}', [App\Http\Controllers\ProductController::class, 'productShow'])->name('product.show');
