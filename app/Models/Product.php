@@ -25,41 +25,37 @@ class Product extends Model
         return $products;
     }
 
-    public function searchAndSortProductsMethod($request, $query){
-
+    public function searchProductsMethod($request,$query){
+        
         $keyword = $request->input('keyword');
-        if (! empty($keyword)) {
-            $query->where('product_name', 'LIKE', "%{$keyword}%");
+        if(! empty($keyword)){
+            $query->where('product_name','Like',"%{$keyword}%");
         }
 
         $companyId = $request->input('company_id');
-        if (! empty($companyId)) {
-            $query->where('company_id', $companyId);
+        if(! empty($companyId)) {
+            $query->where('company_id' , $companyId);
         }
 
         $upperLimitPrice = $request->input('upper_limit_price');
-        if (! empty($upperLimitPrice)) {
+        if(! empty($upperLimitPrice)){
             $query->where('price', '<=', $upperLimitPrice);
         }
 
         $lowerLimitPrice = $request->input('lower_limit_price');
-        if (! empty($lowerLimitPrice)) {
+        if(! empty($lowerLimitPrice)){
             $query->where('price', '>=', $lowerLimitPrice);
         }
 
         $upperLimitStock = $request->input('upper_limit_stock');
-        if (! empty($upperLimitStock)) {
+        if(! empty($upperLimitStock)){
             $query->where('stock', '<=', $upperLimitStock);
         }
 
         $lowerLimitStock = $request->input('lower_limit_stock');
-        if (! empty($lowerLimitStock)) {
+        if(! empty($lowerLimitStock)){
             $query->where('stock', '>=', $lowerLimitStock);
         }
-
-        $sortColumn = $request->input('sort','id');
-        $sortDirection = $request->input('direction', 'asc');
-        $query->orderBy($sortColumn, $sortDirection);
 
         return $query;
     }
