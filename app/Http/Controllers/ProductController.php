@@ -20,7 +20,7 @@ class ProductController extends Controller
     {
         $query = $this->product->newQuery();
         $companies = $this->company->all();
-        $products = $query->sortable()->paginate(7);
+        $products = $query->paginate(7);
 
         return view('products_list', [
             'products' => $products,
@@ -28,39 +28,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public function searchProducts(Request $request)
+    public function searchAndSortProducts(Request $request)
     {
         $query = Product::with('company');
 
-        $keyword = $request->input('keyword');
-        if (! empty($keyword)) {
-            $query->where('product_name', 'LIKE', "%{$keyword}%");
-        }
-
-        $companyId = $request->input('company_id');
-        if (! empty($companyId)) {
-            $query->where('company_id', $companyId);
-        }
-
-        $upperLimitPrice = $request->input('upper_limit_price');
-        if (! empty($upperLimitPrice)) {
-            $query->where('price', '<=', $upperLimitPrice);
-        }
-
-        $lowerLimitPrice = $request->input('lower_limit_price');
-        if (! empty($lowerLimitPrice)) {
-            $query->where('price', '>=', $lowerLimitPrice);
-        }
-
-        $upperLimitStock = $request->input('upper_limit_stock');
-        if (! empty($upperLimitStock)) {
-            $query->where('stock', '<=', $upperLimitStock);
-        }
-
-        $lowerLimitStock = $request->input('lower_limit_stock');
-        if (! empty($lowerLimitStock)) {
-            $query->where('stock', '>=', $lowerLimitStock);
-        }
+        $query = $this->product->searchAndSortProductsMethod($request,$query);
 
         $products = $query->paginate(7);
 

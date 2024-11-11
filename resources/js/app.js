@@ -1,3 +1,6 @@
+let currentSortColumn = 'id'; 
+let currentSortDirection = 'asc'; 
+
 $(document).ready(function() {
   let csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -34,6 +37,29 @@ $(document).ready(function() {
     deleteProduct(productId);
   });
 
+  $(document).on('click', '.product_sort_btn',function(){
+    let column = $(this).data('column');
+    sortProducts(column);
+  });
+
+  function sortProducts(column){
+    if (currentSortColumn === column){
+      currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      currentSortColumn = column;
+      currentSortDirection = 'asc';
+    }
+    
+    let keyword = $('#keyword').val();
+    let companyId = $('#company_id').val();
+    let upperLimitPrice = $('#upper_limit_price').val();
+    let lowerLimitPrice = $('#lower_limit_price').val();
+    let upperLimitStock = $('#upper_limit_stock').val();
+    let lowerLimitStock = $('#lower_limit_stock').val();
+
+    searchProductForm(keyword,companyId,upperLimitPrice,lowerLimitPrice,upperLimitStock,lowerLimitStock);
+  }
+
   $('#search__form').on('submit', function(e) {
       e.preventDefault();
       let keyword = $('#keyword').val();
@@ -56,11 +82,19 @@ $(document).ready(function() {
               upper_limit_price: upperLimitPrice,
               lower_limit_price: lowerLimitPrice,
               upper_limit_stock: upperLimitStock,
-              lower_limit_stock: lowerLimitStock
+              lower_limit_stock: lowerLimitStock,
+              sort: currentSortColumn,
+              direction: currentSortDirection
           },
           dataType: 'json'
       })
       .done(function(data) {
+        displayProducts(data);
+      }).fail(function(data) {
+        alert('検索出来ませんでした。');
+      });
+
+      function displayProducts(data){
           let productListHtml = '';
           let productUrl = `${baseUrl}product/show`; 
 
@@ -68,7 +102,7 @@ $(document).ready(function() {
               productListHtml +=`
                   <tr id="product-row-${product.id}"> 
                       <td class="products__list-id">${product.id}.</td>
-                      <td>${product.img_path ? `<img src="${baseUrl}${product.img_path}" width="50" height="50">` : '商品画像'}</td>
+                      <td>${product.img_path ? `<img class="products__list-img" src="${baseUrl}${product.img_path}" width="50" height="50">` : '商品画像'}</td>
                       <td class="product__name">${product.product_name}</td>
                       <td>￥${product.price}</td>
                       <td>${product.stock}</td>
@@ -82,9 +116,7 @@ $(document).ready(function() {
                   </tr>`;
           });
           $('#productList tbody').html(productListHtml);
-
-      }).fail(function(data) {
-          alert('検索出来ませんでした。');
-      });
+        }
+     
   };
 });

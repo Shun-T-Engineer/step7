@@ -41,12 +41,12 @@
         <table>
           <thead>
             <tr>
-              <th class="id_number">@sortablelink('id','ID')</th>
+            <th class="id_number" > <a href="#" class="product_sort_btn" data-column="id">ID</a></th>
               <th>商品画像</th>
-              <th>@sortablelink('product_name','商品名')</th>
-              <th>@sortablelink('price','価格')</th>
-              <th>@sortablelink('stock','在庫数')</th>
-              <th>@sortablelink('company_id','メーカー名')</th>
+              <th><a href="#" class="product_sort_btn" data-column="product_name">商品名</a></th>
+              <th><a href="#" class="product_sort_btn" data-column="price">価格</a></th>
+              <th><a href="#" class="product_sort_btn" data-column="stock">在庫数</a></th>
+              <th><a href="#" class="product_sort_btn" data-column="company_id">メーカー</a></th>
               <th>
               <button type="button" onclick="location.href='{{ route('product.regist.form') }}'" class="new_product__btn" id="new_product_btn">新規登録</button>
               </th>

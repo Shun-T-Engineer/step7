@@ -13,15 +13,16 @@ class SaleController extends Controller
 {
     public function saleItem(Request $request)
     {
+        $product = Product::find($request->product_id);
+        if (! $product) {
+            return response()->json([
+                'success' => false,
+                'message' => '商品が見つかりません。',
+            ], 404);
+        }
+
         DB::beginTransaction();
         try {
-            $product = Product::find($request->product_id);
-            if (! $product) {
-                return response()->json([
-                    'success' => false,
-                    'message' => '商品が見つかりません。',
-                ], 404);
-            }
 
             $product->stockCount();
 
